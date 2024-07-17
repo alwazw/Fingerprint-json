@@ -43,20 +43,20 @@ def save_to_json(data):
 
 # Function to save data to MSSQL
 #def save_to_mssql(data):
-    try:
-        conn = pyodbc.connect(connection_string)
-        cursor = conn.cursor()
-        cursor.execute("""
-            INSERT INTO fingerprints (ip, referrer, currentUrl, userAgent, appName, appVersion, languages, colorDepth, deviceMemory, hardwareConcurrency, screenResolution, timezoneOffset, plugins, canvasFingerprint, webglFingerprint, renderer, audioFingerprint, touchSupport, screenOrientation, cookieEnabled, doNotTrack, battery, networkInfo, geolocation, localStorage, sessionStorage, timestamp)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (
-            data['ip'], data['referrer'], data['currentUrl'], data['userAgent'], data['appName'], data['appVersion'], ','.join(data['languages']),
-            data['colorDepth'], data['deviceMemory'], data['hardwareConcurrency'], ','.join(map(str, data['screenResolution'])), data['timezoneOffset'],
-            ','.join(data['plugins']), data['canvasFingerprint'], ','.join(map(str, data['webglFingerprint'])), data['renderer'], ','.join(map(str, data['audioFingerprint'])),
-            data['touchSupport'], data['screenOrientation'], data['cookieEnabled'], data['doNotTrack'], json.dumps(data['battery']), json.dumps(data['networkInfo']),
-            json.dumps(data['geolocation']), json.dumps(data['localStorage']), json.dumps(data['sessionStorage']), datetime.now()
-        ))
-        conn.commit()
+#    try:
+#        conn = pyodbc.connect(connection_string)
+#        cursor = conn.cursor()
+#        cursor.execute("""
+#            INSERT INTO fingerprints (ip, referrer, currentUrl, userAgent, appName, appVersion, languages, colorDepth, deviceMemory, hardwareConcurrency, screenResolution, timezoneOffset, plugins, canvasFingerprint, webglFingerprint, renderer, audioFingerprint, touchSupport, screenOrientation, cookieEnabled, doNotTrack, battery, networkInfo, geolocation, localStorage, sessionStorage, timestamp)
+#            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+#        """, (
+#            data['ip'], data['referrer'], data['currentUrl'], data['userAgent'], data['appName'], data['appVersion'], ','.join(data['languages']),
+#            data['colorDepth'], data['deviceMemory'], data['hardwareConcurrency'], ','.join(map(str, data['screenResolution'])), data['timezoneOffset'],
+#            ','.join(data['plugins']), data['canvasFingerprint'], ','.join(map(str, data['webglFingerprint'])), data['renderer'], ','.join(map(str, data['audioFingerprint'])),
+#            data['touchSupport'], data['screenOrientation'], data['cookieEnabled'], data['doNotTrack'], json.dumps(data['battery']), json.dumps(data['networkInfo']),
+#            json.dumps(data['geolocation']), json.dumps(data['localStorage']), json.dumps(data['sessionStorage']), datetime.now()
+#        ))
+#        conn.commit()
 #    except Exception as e:
 #        print(f"Error saving to MSSQL: {e}")
 #    finally:
