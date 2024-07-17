@@ -20,7 +20,7 @@ After starting the Flask app, navigate to http://localhost:8080 or (Server-IP:80
     │    └── index.html
     │
     ├── data    
-    └── fingerprints.json
+         └── fingerprints.json
 
 ### Deploy:
 
