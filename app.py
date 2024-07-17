@@ -57,10 +57,10 @@ def save_to_json(data):
             json.dumps(data['geolocation']), json.dumps(data['localStorage']), json.dumps(data['sessionStorage']), datetime.now()
         ))
         conn.commit()
-    except Exception as e:
-        print(f"Error saving to MSSQL: {e}")
-    finally:
-        conn.close()
+#    except Exception as e:
+#        print(f"Error saving to MSSQL: {e}")
+#    finally:
+#        conn.close()
 
 # Endpoint to collect fingerprints
 @app.route('/collect', methods=['POST'])
