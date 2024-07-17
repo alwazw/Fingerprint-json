@@ -45,5 +45,5 @@ python3 app.py
 http://localhost:8080
 ```
 
-5. Export JSON
+5. Export 
 JSON located main/data/fingerprints.json
